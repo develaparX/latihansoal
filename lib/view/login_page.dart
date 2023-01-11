@@ -24,13 +24,106 @@ class _LoginPageState extends State<LoginPage> {
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
             ),
           ),
+          SizedBox(
+            height: 20,
+          ),
           Image.asset(R.assets.imgLogin),
-          Text(R.strings.loginDescription),
+          SizedBox(
+            height: 35,
+          ),
+          Text(
+            R.strings.Welcome,
+            style: TextStyle(
+              fontSize: 22,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+          Text(
+            R.strings.loginDescription,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
+              color: R.colors.greysubtitle,
+            ),
+          ),
           Spacer(),
-          ElevatedButton(
-              onPressed: () {}, child: Text(R.strings.loginWithGoogle)),
+          ButtonLogin(
+            backgroundColor: Colors.white,
+            borderColor: R.colors.primary,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(R.assets.icGoogle),
+                SizedBox(
+                  width: 15,
+                ),
+                Text(
+                  R.strings.loginWithGoogle,
+                  style: TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.w500,
+                    color: R.colors.blackLogin,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          ButtonLogin(
+            backgroundColor: Colors.black,
+            borderColor: Colors.black,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(R.assets.icApple),
+                SizedBox(
+                  width: 15,
+                ),
+                Text(
+                  R.strings.loginWithApple,
+                  style: TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.white,
+                  ),
+                ),
+              ],
+            ),
+          ),
         ]),
       ),
+    );
+  }
+}
+
+class ButtonLogin extends StatelessWidget {
+  const ButtonLogin({
+    super.key,
+    required this.backgroundColor,
+    required this.child,
+    required this.borderColor,
+  });
+
+  final Color backgroundColor;
+  final Widget child;
+  final Color borderColor;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 12),
+      child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: backgroundColor,
+            elevation: 0,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(25),
+              side: BorderSide(color: borderColor),
+            ),
+            fixedSize: Size(MediaQuery.of(context).size.width * 0.8, 50),
+          ),
+          onPressed: () {},
+          child: child),
     );
   }
 }
