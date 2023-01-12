@@ -114,7 +114,7 @@ class ButtonLogin extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 12),
       child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-            backgroundColor: backgroundColor,
+            primary: backgroundColor,
             elevation: 0,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(25),
